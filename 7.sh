@@ -56,9 +56,9 @@ http {
 	#set_real_ip_from   2a06:98c0::/29;
 	real_ip_header      CF-Connecting-IP;
 
-	log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-					  '$status $body_bytes_sent "$http_referer" '
-					  '"$http_user_agent" "$http_x_forwarded_for"';
+	log_format  main  '\$remote_addr - \$remote_user [\$time_local] "\$request" '
+					  '\$status \$body_bytes_sent "\$http_referer" '
+					  '"\$http_user_agent" "\$http_x_forwarded_for"';
 
 	#access_log  /var/log/nginx/access.log  main;
 
