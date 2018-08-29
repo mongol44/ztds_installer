@@ -1,12 +1,12 @@
 #!/bin/bash
 
-clear
-
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload
 
-read -p "Enter domain name (e.g. site.ru) and press [ENTER]:" domain </dev/tty
+clear
+
+read -p 'Enter domain name (e.g. site.ru) and press [ENTER]:' domain </dev/tty
 
 yum install -y epel-release nginx php-fpm php-cli php-gd php-ldap php-odbc php-pdo php-pecl-memcache php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap
 
@@ -19,6 +19,12 @@ systemctl start nginx php-fpm.service
 mkdir -m 777 /var/lib/php/session
 mkdir -m 777 /var/www/html/$domain
 
+clear
+
 read -p 'Please upload files to the /var/www/html/$domain and press [ENTER] to continue' done </dev/tty
 
 chmod 777 -R /var/www/html/$domain
+
+clear
+
+echo 'Done'
