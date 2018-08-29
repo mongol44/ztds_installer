@@ -5,7 +5,7 @@ firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload
 
 echo -n "Enter domain name (e.g. site.ru) and press [ENTER]: "
-read domain
+read -p domain
 
 yum install -y epel-release nginx php-fpm php-cli php-gd php-ldap php-odbc php-pdo php-pecl-memcache php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap
 
@@ -20,6 +20,6 @@ mkdir -m 777 /var/www/html/$domain
 
 echo -n 'Please upload files to the /var/www/html/$domain and press [ENTER]:';
 
-read done
+read -p done
 
 chmod 777 -R /var/www/html/$domain
