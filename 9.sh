@@ -86,36 +86,36 @@ http {
 		server_name $domain www.$domain;
 
 		# root path
-		set $root_path /var/www/html/$domain;
+		set \$root_path /var/www/html/$domain;
 
-		root $root_path;
+		root \$root_path;
 
 		charset utf-8;
 		index index.php;
 
-		location ~* \.(jpg|jpeg|gif|png|js|css|txt|zip|ico|gz|csv)$ {
+		location ~* \.(jpg|jpeg|gif|png|js|css|txt|zip|ico|gz|csv)\$ {
 			access_log off;
 			expires max;
 		}
 
-		location ~* /(database|ini|keys|lib|log)/.*$ {
+		location ~* /(database|ini|keys|lib|log)/.*\$ {
 			return 403;
 		}
 
-		location ~* \.(htaccess|ini|txt|db)$ {
+		location ~* \.(htaccess|ini|txt|db)\$ {
 			return 403;
 		}
 
-		location ~ \.php$ {
+		location ~ \.php\$ {
 			include /etc/nginx/fastcgi_params;
 			fastcgi_pass 127.0.0.1:9000;
 			#fastcgi_pass unix:/var/run/php5-fpm.sock;
 			fastcgi_index index.php;
-			fastcgi_param SCRIPT_FILENAME $root_path$fastcgi_script_name;
+			fastcgi_param SCRIPT_FILENAME \$root_path\$fastcgi_script_name;
 		}
 
 		location / {
-			try_files $uri $uri/ /index.php?$args;
+			try_files \$uri \$uri/ /index.php?\$args;
 		}
 	}
 }
