@@ -23,6 +23,8 @@ clear
 
 read -p 'Please upload files to the /var/www/html/$domain and press [ENTER] to continue' done </dev/tty
 
+curl -o /var/www/html/$domain/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/ztds_v0.7.3.7z?raw=true
+
 chmod 777 -R /var/www/html/$domain
 
 clear
