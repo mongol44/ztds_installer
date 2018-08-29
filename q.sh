@@ -4,6 +4,17 @@ ztds_version='ztds_v0.7.3'
 
 clear
 
+password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
+password_md5=var=$password|md5sum
+
+api_key=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
+postback_key=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
+
+echo $password
+echo $password_md5
+echo $api_key
+echo $postback_key
+
 read -p 'Enter domain name (e.g. site.ru) and press [ENTER]: ' domain </dev/tty
 
 firewall-cmd --permanent --zone=public --add-service=http
