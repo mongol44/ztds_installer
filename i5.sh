@@ -23,7 +23,7 @@ curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/mast
 
 7za x -o/tmp/ztds /tmp/ztds.7z
 
-rsync -r /tmp/ztds/$ztds_version /var/www/html/$domain
+cp -a /tmp/ztds/$ztds_version/. /var/www/html/$domain
 
 chmod 777 -R /var/www/html/$domain
 chown -R nginx:nginx /var/www/html/$domain
