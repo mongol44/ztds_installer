@@ -2,7 +2,9 @@
 
 ztds_version='ztds_v0.7.3'
 
-read -p '\nEnter domain name (e.g. site.ru) and press [ENTER]: ' domain </dev/tty
+clear
+
+read -p 'Enter domain name (e.g. site.ru) and press [ENTER]: ' domain </dev/tty
 
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
