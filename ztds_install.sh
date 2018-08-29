@@ -18,7 +18,7 @@ systemctl start nginx php-fpm.service
 mkdir -m 777 /var/lib/php/session
 mkdir -m 777 /var/www/html/$domain
 
-echo 'Please upload files to the /var/www/html/$domain\nthen press Enter';
+echo -n 'Please upload files to the /var/www/html/$domain and press [ENTER]:';
 
 read done
 
