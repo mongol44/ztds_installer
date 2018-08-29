@@ -210,8 +210,8 @@ echo '-------------------------------------------------'
 echo ''
 
 echo "url: http://$domain/admin.php"
+echo "username: admin"
 echo "password: $password"
-echo $password_md5
 echo "api_key: $api_key"
 echo "postback_key: $postback_key"
 
