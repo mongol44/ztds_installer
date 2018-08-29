@@ -5,7 +5,8 @@ ztds_version='ztds_v0.7.3'
 clear
 
 password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
-password_md5=`md5sum ${password} | awk '{ print $1 }'`
+password_md5=$password|md5sum
+
 api_key=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
 postback_key=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
 
