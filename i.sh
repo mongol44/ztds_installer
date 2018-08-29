@@ -23,7 +23,7 @@ clear
 
 #read -p 'Please upload files to the /var/www/html/$domain and press [ENTER] to continue' done </dev/tty
 
-curl -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/ztds_v0.7.3.7z?raw=true
+curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/ztds_v0.7.3.7z?raw=true
 
 7za x -o/tmp/ztds /tmp/ztds.7z
 
