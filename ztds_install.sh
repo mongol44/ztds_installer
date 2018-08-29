@@ -1,5 +1,7 @@
 #!/bin/bash
 
+read -p "Run command $foo? [yn]" answer
+
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload
