@@ -2,13 +2,11 @@
 
 ztds_version = 'ztds_v0.7.3'
 
+read -p 'Enter domain name (e.g. site.ru) and press [ENTER]:' domain </dev/tty
+
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload
-
-clear
-
-read -p 'Enter domain name (e.g. site.ru) and press [ENTER]:' domain </dev/tty
 
 yum install -y epel-release p7zip nginx php-fpm php-cli php-gd php-ldap php-odbc php-pdo php-pecl-memcache php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap
 
@@ -21,10 +19,6 @@ systemctl start nginx php-fpm.service
 mkdir -m 777 /var/lib/php/session
 mkdir -m 777 /var/www/html/$domain
 
-clear
-
-#read -p 'Please upload files to the /var/www/html/$domain and press [ENTER] to continue' done </dev/tty
-
 curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/$ztds_version?raw=true
 
 7za x -o/tmp/ztds /tmp/ztds.7z
@@ -32,10 +26,10 @@ curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/mast
 cp -rf /tmp/ztds/$ztds_version /var/www/html/$domain
 
 chmod 777 -R /var/www/html/$domain
-#chown nginx
+chown -R nginx:nginx /var/www/html/$domain
 
-#rm -f /tmp/ztds
-#rm -f /tmp/ztds.7z
+rm -f /tmp/ztds
+rm -f /tmp/ztds.7z
 
 clear
 
