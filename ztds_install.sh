@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 read -p "Run command $foo? [yn]" answer </dev/tty
 
 firewall-cmd --permanent --zone=public --add-service=http
