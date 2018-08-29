@@ -23,7 +23,7 @@ mkdir -m 777 /var/www/html/$domain
 
 echo "https://github.com/spartanetsru/ztds_installer/blob/master/$ztds_version?raw=true"
 
-curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/$ztds_version?raw=true
+curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/$ztds_version.7z?raw=true
 
 7za x -o/tmp/ztds /tmp/ztds.7z
 
