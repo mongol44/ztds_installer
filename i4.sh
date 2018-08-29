@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ztds_version = 'ztds_v0.7.3'
+ztds_version='ztds_v0.7.3'
 
 read -p 'Enter domain name (e.g. site.ru) and press [ENTER]:' domain </dev/tty
 
