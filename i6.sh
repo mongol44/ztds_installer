@@ -2,7 +2,7 @@
 
 ztds_version='ztds_v0.7.3'
 
-read -p 'Enter domain name (e.g. site.ru) and press [ENTER]:' domain </dev/tty
+read -p 'Enter domain name (e.g. site.ru) and press [ENTER]: ' domain </dev/tty
 
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
@@ -28,7 +28,7 @@ cp -a /tmp/ztds/$ztds_version/. /var/www/html/$domain
 chmod 777 -R /var/www/html/$domain
 chown -R nginx:nginx /var/www/html/$domain
 
-rm -rf /tmp/ztds
-rm -f /tmp/ztds.7z
+#rm -rf /tmp/ztds
+#rm -f /tmp/ztds.7z
 
 echo 'Done'
