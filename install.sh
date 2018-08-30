@@ -124,33 +124,28 @@ http {
 EOM
 
 systemctl enable nginx php-fpm.service
-
 systemctl restart nginx php-fpm.service
 
 mkdir -m 777 /var/lib/php/session
-
 mkdir -m 777 /var/www/html/$domain
 
 rm -rf /tmp/ztds
 rm -f /tmp/ztds.7z
-
 curl -L -o /tmp/ztds.7z https://github.com/spartanetsru/ztds_installer/blob/master/$ztds_version.7z?raw=true
-
 7za x -o/tmp/ztds /tmp/ztds.7z
-
 cp -a /tmp/ztds/$ztds_version/. /var/www/html/$domain
-
 chmod 777 -R /var/www/html/$domain
 chown -R nginx:nginx /var/www/html/$domain
-
 rm -rf /tmp/ztds
 rm -f /tmp/ztds.7z
-
 
 password=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 8 | head -n 1)
 password_md5=$(echo -n "$password" | md5sum | cut -f1 -d' ')
 api_key=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
 postback_key=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
+new_admin_php=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 6 | head -n 1)
+
+mv /var/www/html/$domain/admin.php /var/www/html/$domain/$new_admin_php.php
 
 /bin/cat <<EOM >/var/www/html/$domain/config.php
 <?php
@@ -170,7 +165,7 @@ date_default_timezone_set('Europe/Moscow');//временная зона (http:/
 \$postback_key = '$postback_key';//postback ключ
 \$trash = 'http://www.ru';//url куда будем сливать весь мусор (переходы в несуществующие группы). Если \$trash = ''; то будет показана пустая страница
 \$ini_folder = 'ini';//название папки с файлами .ini
-\$admin_page = 'admin.php';//название файла админки (если будете менять не забудьте переименовать сам файл!)
+\$admin_page = '$new_admin_php.php';//название файла админки (если будете менять не забудьте переименовать сам файл!)
 \$folder = '';//для работы zTDS в папке укажите ее название, например \$folder = 'folder'; или \$folder = 'folder1/folder2'; если папка в папке
 \$keys_folder = 'keys';//название папки для сохранения ключевых слов (http://tds.com/keys)
 \$log_folder = 'log';//название папки с логами (http://tds.com/log)
@@ -209,7 +204,7 @@ echo ''
 echo '-------------------------------------------------'
 echo ''
 
-echo "url: http://$domain/admin.php"
+echo "url: http://$domain/$new_admin_php.php"
 echo "username: admin"
 echo "password: $password"
 echo "api_key: $api_key"
