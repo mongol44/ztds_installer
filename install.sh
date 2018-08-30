@@ -10,7 +10,8 @@ firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload
 
-yum install -y epel-release p7zip nginx php-fpm php-cli php-gd php-ldap php-odbc php-pdo php-pecl-memcache php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap
+yum install -y epel-release
+yum install -y p7zip nginx php-fpm php-cli php-gd php-ldap php-odbc php-pdo php-pecl-memcache php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap
 
 /bin/cat <<EOM >/etc/nginx/nginx.conf
 # For more information on configuration, see:
