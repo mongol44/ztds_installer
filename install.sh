@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ztds_version='ztds_v0.7.4'
+ztds_version='ztds_v.0.8.4'
 
 clear
 
